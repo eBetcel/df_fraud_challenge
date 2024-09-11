@@ -12,6 +12,7 @@ from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
 from airflow.operators.bash import BashOperator
 from airflow.decorators import task
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+from airflow import Dataset
 # from airflow.providers.amazon.aws.operators.athena import AWSAthenaOperator
 # from airflow.providers.amazon.aws.sensors.athena import AthenaSensor
 from airflow.contrib.operators.aws_athena_operator import AWSAthenaOperator
@@ -112,6 +113,8 @@ SELECT (
 	(SELECT COUNT(*) FROM "processed_fraud_credit" WHERE location_region NOT IN ('Europe', 'South America', 'Asia', 'Africa', 'North America')) AS rows_with_errors
 	FROM "default"."processed_fraud_credit"
 """
+
+ingestion_monitoring_dataset = Dataset("s3://airflow-localiza/datasets-airflow/ingestion_monitoring")
 with DAG("ingest_data", start_date = datetime(2024,1,1),
          schedule_interval = "@once", catchup = False) as dag:
             sensor_file_s3 = S3KeySensor(
@@ -152,7 +155,8 @@ with DAG("ingest_data", start_date = datetime(2024,1,1),
                 database="default",
                 aws_conn_id = "s3_athena",
                 region_name="us-east-1",
-				output_location='s3://ebetcel-athena-results/teste-localiza'
+				output_location='s3://ebetcel-athena-results/teste-localiza',
+                outlets=[ingestion_monitoring_dataset]
 			)
             
             calculate_data_quality_metrics = AWSAthenaOperator(
