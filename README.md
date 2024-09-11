@@ -8,30 +8,23 @@ Esse projeto faz uma ingestão orquestrada por Airflow cujo objetivo é gerar as
 "receiving address" com maior "amount" dentre estas transações (apresente
 o "receiving address", o "amount" e o "timestamp").
 
+Durante o processo, os dados são ingeridos de um bucket para outro e é criada uma tabela de Data Quality 
+
 ## Sumário
 - [Instalação](#Instalação)
-- [Usage](#usage)
+- [Uso](#Uso)
 - [Contributing](#contributing)
-- [License](#license)
+- [Licença](#Licença)
 
 ## Instalação
-To get started with this project, follow these steps:
-1. Clone the repository: `git clone https://github.com/your-username/df_fraud_challenge.git`
-2. Install the required dependencies: `pip install -r requirements.txt`
+Para executar o projeto é necessário ter instalado o docker e o docker compose no seu ambiente. Siga os seguintes passos:
+1. Clone os repositórios: `git clone git@github.com:eBetcel/df_fraud_challenge.git`
+2. Crie a imagem docker estendendo a imagem do Airflow: `docker build . --tag extending_airflow:latest`
+3. docker compose up -d    
 
-## Usage
-To use this project, follow these steps:
-1. Navigate to the project directory: `cd df_fraud_challenge`
-2. Run the main script: `python main.py`
-3. Follow the prompts and provide the necessary inputs.
+## Uso
+1. Crie os buckets correspondentes na AWS e modifique o código onde tem os caminhos "hardcodeds"
+2. Crie o conector do Airflow dando permissão para o Athena e o S3
 
-## Contributing
-Contributions are welcome! If you would like to contribute to this project, please follow these guidelines:
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes and commit them: `git commit -m 'Add your feature description'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Submit a pull request.
-
-## License
-This project is licensed under the [MIT License](LICENSE).
+## Licença
+Este projeto está sob a [MIT License](LICENSE).
