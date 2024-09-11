@@ -120,7 +120,7 @@ with DAG("ingest_data", start_date = datetime(2024,1,1),
             sensor_file_s3 = S3KeySensor(
                     task_id = "sensor_file_s3",
                     aws_conn_id = "s3_athena",
-                    bucket_key = "s3://airflow-localiza/data-input/df_test.csv"
+                    bucket_key = "s3://airflow-localiza/data-input/df_fraud_credit.csv"
             )
 
             input_create_table = AWSAthenaOperator(
