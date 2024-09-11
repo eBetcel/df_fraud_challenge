@@ -1,0 +1,6 @@
+timestamp,sending_address,receiving_address,amount,transaction_type,location_region,ip_prefix,login_frequency,session_duration,purchase_pattern,age_group,risk_score,anomaly
+1618185002,0x9d32d0bf2c00f41ce7ca01b66e174cc4dcb0c1da,0x39f82e1c09bc6d7baccc1e79e5621ff812f50572,67435.0,transfer,Europe,192.0,3,48,focused,established,18.75,low_risk
+1698642474,0xd6e251c23cbf52dbd472f079147873e655d8096f,0x51e8fbe24f124e0e30a614e14401b9bbfed5384c,1.0,purchase,South America,172.0,5,61,focused,established,25.0,low_risk
+1619180066,0x2e0925b922fed01f6a85d213ae2718f54b8ca305,0x52c7911879f783d590af45bda0c0ef2b8536706f,66211.0,purchase,Asia,192.168,3,74,focused,established,31.25,low_risk
+1591413882,0x93efefc25fcaf31d7695f28018d7a11ece55457f,0x8ac3b7bd531b3a833032f07d4e47c7af6ea7bace,14998.0,transfer,South America,172.0,8,111,high_value,veteran,36.75,low_risk
+1611257295,0xad3b8de45d63f5cce28aef9a82cf30c397c6ceb9,0x6fdc047c2391615b3facd79b4588c7e9106e49f2,66002.0,sale,Africa,172.16,6,100,high_value,veteran,62.5,moderate_risk
